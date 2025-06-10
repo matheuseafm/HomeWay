@@ -68,8 +68,12 @@ const ListingCard: React.FC<ListingCardProps> = ({
         const end = new Date(reservation.endDate);
 
         return `${format(start, 'PP')} - ${format(end, 'PP')}`;
-    }, [reservation]);
-
+    }, [reservation]);    // Handle image error by providing a fallback
+    const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+        console.log('Image failed to load:', data.imageSrc);
+        e.currentTarget.src = '/images/placeholder.jpg';
+    };
+    
     return (
         <div
             onClick={() => router.push(`/listings/${data.id}`)}
@@ -84,8 +88,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
             overflow-hidden 
             rounded-xl
           "
-                >
-                    <Image
+                >                    <Image
                         fill
                         className="
               object-cover 
@@ -96,6 +99,8 @@ const ListingCard: React.FC<ListingCardProps> = ({
             "
                         src={data.imageSrc}
                         alt="Listing"
+                        priority
+                        onError={handleImageError}
                     />
                     <div className="
             absolute

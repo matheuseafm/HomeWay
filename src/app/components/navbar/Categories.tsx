@@ -1,4 +1,4 @@
-'use client';
+    'use client';
 
 import { usePathname, useSearchParams } from 'next/navigation';
 import { TbBeach, TbMountain, TbPool } from 'react-icons/tb';
@@ -23,79 +23,49 @@ import Container from '../Container';
 
 export const categories = [
     {
-        label: 'Praia',
-        icon: TbBeach,
+        label: 'PUCPR',
+        icon: GiCastle,
         description: 'Esta propriedade é perto da praia!',
     },
     {
-        label: 'Moinhos',
-        icon: GiWindmill,
+        label: 'UFPR',
+        icon: GiCastle,
         description: 'Esta propriedade tem moinhos de vento!',
     },
     {
-        label: 'Moderno',
-        icon: MdOutlineVilla,
+        label: 'Positivo',
+        icon: GiCastle,
         description: 'Esta propriedade é moderna!'
     },
     {
-        label: 'Campo',
-        icon: TbMountain,
+        label: 'Harvard',
+        icon: GiCastle,
         description: 'Esta propriedade é no campo!'
     },
     {
-        label: 'Piscinas',
-        icon: TbPool,
+        label: 'MIT',
+        icon: GiCastle,
         description: 'Esta propriedade tem uma bela piscina!'
     },
     {
-        label: 'Ilhas',
-        icon: GiIsland,
+        label: 'Oxford',
+        icon: GiCastle,
         description: 'Esta propriedade fica em uma ilha!'
     },
     {
-        label: 'Lago',
-        icon: GiBoatFishing,
+        label: 'Cambridge',
+        icon: GiCastle,
         description: 'Esta propriedade é perto de um lago!'
     },
     {
-        label: 'Esqui',
-        icon: FaSkiing,
+        label: 'Stanford',
+        icon: GiCastle,
         description: 'Esta propriedade tem atividades de esqui!'
     },
     {
-        label: 'Castelos',
+        label: 'USP',
         icon: GiCastle,
         description: 'Esta propriedade é um castelo antigo!'
-    },
-    {
-        label: 'Cavernas',
-        icon: GiCaveEntrance,
-        description: 'Esta propriedade fica em uma caverna!'
-    },
-    {
-        label: 'Camping',
-        icon: GiForestCamp,
-        description: 'Esta propriedade oferece atividades de acampamento!'
-    },
-    {
-        label: 'Ártico',
-        icon: BsSnow,
-        description: 'Esta propriedade fica em um ambiente ártico!'
-    },
-    {
-        label: 'Deserto',
-        icon: GiCactus,
-        description: 'Esta propriedade fica no deserto!'
-    },
-    {
-        label: 'Celeiros',
-        icon: GiBarn,
-        description: 'Esta propriedade fica em um celeiro!'
-    },
-    {
-        label: 'Luxo',
-        icon: IoDiamond,
-        description: 'Esta propriedade é novinha em folha e luxuosa!'
     }
 ]
 
