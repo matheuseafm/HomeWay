@@ -82,3 +82,14 @@ SELECT
 FROM User u2
 JOIN Listing l1 ON l1.userId = (SELECT id FROM User WHERE email = 'joao@example.com')
 WHERE u2.email = 'maria@example.com';
+
+INSERT INTO User (name, email, emailVerified, image, hashedPassword)
+VALUES (
+  'Usuário Teste',
+  'teste@teste.com',
+  NOW(),
+  'https://i.pravatar.cc/150?img=1',
+  '$2b$12$KIXQJQw1Qw1Qw1Qw1Qw1QeQw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw'
+);
+
+UPDATE User SET hashedPassword = '$2b$12$XW4F/9lBTc10AJNzlkVuI.v4bNzu137JWWiJcHM5add7ZSviB6eau' WHERE email = 'teste@teste.com';
