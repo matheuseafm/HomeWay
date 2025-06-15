@@ -24,6 +24,16 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
         onChange(result.info.secure_url);
     }, [onChange]);
 
+    const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+        const fallbackImage = '/images/placeholder.jpg';
+        const img = e.currentTarget;
+        
+        if (img.src !== fallbackImage) {
+            console.log('Imagem falhou ao carregar:', value);
+            img.src = fallbackImage;
+        }
+    };
+
     return (
         <CldUploadWidget
             onUpload={handleUpload}
@@ -67,6 +77,9 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
                                     style={{ objectFit: 'cover' }}
                                     src={value}
                                     alt="House"
+                                    onError={handleImageError}
+                                    sizes="(max-width: 768px) 100vw"
+                                    priority
                                 />
                             </div>
                         )}

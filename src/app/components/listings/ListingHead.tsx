@@ -27,6 +27,16 @@ const ListingHead: React.FC<ListingHeadProps> = ({
 
     const location = getByValue(locationValue);
 
+    const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+        const fallbackImage = '/images/placeholder.jpg';
+        const img = e.currentTarget;
+        
+        if (img.src !== fallbackImage) {
+            console.log('Imagem falhou ao carregar:', imageSrc);
+            img.src = fallbackImage;
+        }
+    };
+
     return (
         <>
             <Heading
@@ -46,6 +56,9 @@ const ListingHead: React.FC<ListingHeadProps> = ({
                     fill
                     className="object-cover w-full"
                     alt="Image"
+                    onError={handleImageError}
+                    sizes="(max-width: 1024px) 100vw, 75vw"
+                    priority
                 />
                 <div
                     className="

@@ -37,7 +37,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
 }) => {
     const router = useRouter();
     const { getByValue } = useCountries();
-
+    console.log("Data ", data)
     const location = getByValue(data.locationValue);
 
     const handleCancel = useCallback(
@@ -70,10 +70,15 @@ const ListingCard: React.FC<ListingCardProps> = ({
         return `${format(start, 'PP')} - ${format(end, 'PP')}`;
     }, [reservation]);    // Handle image error by providing a fallback
     const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-        console.log('Image failed to load:', data.imageSrc);
-        e.currentTarget.src = '/images/placeholder.jpg';
+        const fallbackImage = '/images/placeholder.jpg'; // Imagem de fallback local
+        const img = e.currentTarget;
+        
+        if (img.src !== fallbackImage) {
+            console.log('Imagem falhou ao carregar:', data.imageSrc);
+            img.src = fallbackImage;
+        }
     };
-    
+    console.log(location)
     return (
         <div
             onClick={() => router.push(`/listings/${data.id}`)}
@@ -101,6 +106,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
                         alt="Listing"
                         priority
                         onError={handleImageError}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="
             absolute
@@ -114,7 +120,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
                     </div>
                 </div>
                 <div className="font-semibold text-lg">
-                    {location?.region}, {location?.label}
+                    {location?.region || "Região"}, {location?.label || "Localização"}
                 </div>
                 <div className="font-light text-neutral-500">
                     {reservationDate || data.category}
